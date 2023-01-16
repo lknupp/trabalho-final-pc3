@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1 style="text-align: center">Veículos</h1><br>
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover table-sm" datatable>
+            <thead class="thead-light">
+                <tr>
+                    <th>Marca</th>
+                    <th>Placa</th>
+                    <th>Cor</th>
+                    <th>Ano do Modelo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let veiculo of veiculos ">
+                    <td>{{veiculo.marca.sigla}}</td>
+                    <td>{{veiculo.placa}}</td>
+                    <td>{{veiculo.cor}}</td>
+                    <td>{{veiculo.anoModelo}}</td>
+                    <td>
+                        <button class='btn btn-primary' (click)="delete(veiculo.id)">
+                            <i class="fa fa-trash">
+                                Excluir
+                            </i>
+                        </button>&nbsp;
+
+                        <button class='btn btn-info' (click)="updateVeiculo(veiculo.id)">
+                            <i class="fa fa-edit">
+                                Editar
+                            </i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody><br>
+        </table>
+    </div>
+</div>

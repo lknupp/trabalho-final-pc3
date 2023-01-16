@@ -1,0 +1,115 @@
+<h3 class="text-center">Altere os atributos do veículo</h3>
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div [hidden]="updated" style="width: 400px">
+            <form [formGroup]="veiculoForm" (submit)="update()">
+                <div class="form-group">
+                    <label for="marca">Marca</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        formControlName="marca" 
+                        data-toggle="tooltip"
+                        data-placement="right" 
+                        title="Selecione a marca do veículo"
+                        name="marca" [(ngModel)]="veiculo!.marca.sigla" />
+                    <div class="alert alert-danger" 
+                        *ngIf=" veiculoForm.get('marca')?.touched && 
+                        veiculoForm.get('marca')?.invalid
+                        " style="margin-top: 5px">
+                        <span *ngIf="veiculoForm.get('marca')?.errors?.['required']">
+                                Marca do veículo é obrigatório
+                        </span>
+    
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="placa">
+                        Placa
+                    </label>
+                    <input type="text" 
+                        class="form-control" 
+                        formControlName="placa" 
+                        data-toggle="tooltip"
+                        data-placement="right" 
+                        title="Digite a placa do veículo" 
+                        name="placa"
+                        [(ngModel)]="veiculo!.placa" />
+                    <div class="alert alert-danger" 
+                        *ngIf="veiculoForm.get('placa')?.touched &&
+                            veiculoForm.get('placa')?.invalid
+                        " style="margin-top: 5px">
+                        <span 
+                            *ngIf="veiculoForm.get('placa')?.errors?.['required']">
+                                O preenchimento da placa é obrigatório
+                        </span>
+                        <span *ngIf="veiculoForm.get('placa')?.errors?.['maxlength']">
+                            A placa pode ter no máximo 8 caracteres
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cor">
+                        Cor
+                    </label>
+                    <input type="text" 
+                        class="form-control" 
+                        formControlName="cor" 
+                        data-toggle="tooltip"
+                        data-placement="right" 
+                        title="Digite a cor do veículo" 
+                        name="cor"
+                        [(ngModel)]="veiculo!.cor" />
+                    <div class="alert alert-danger" 
+                        *ngIf="veiculoForm.get('cor')?.touched &&
+                            veiculoForm.get('cor')?.invalid
+                        " style="margin-top: 5px">
+                        <span 
+                            *ngIf="veiculoForm.get('cor')?.errors?.['required']">
+                                O preenchimento da cor é obrigatório
+                        </span>
+                        <span *ngIf="veiculoForm.get('cor')?.errors?.['maxlength']">
+                            A cor pode ter no máximo 20 caracteres
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="anoModelo">
+                        Ano do Modelo
+                    </label>
+                    <input type="text" 
+                        class="form-control" 
+                        formControlName="anoModelo" 
+                        data-toggle="tooltip"
+                        data-placement="right" 
+                        title="Digite a ano do Modelo do veículo" 
+                        name="anoModelo"
+                        [(ngModel)]="veiculo!.anoModelo" />
+                    <div class="alert alert-danger" 
+                        *ngIf="veiculoForm.get('anoModelo')?.touched &&
+                            veiculoForm.get('anoModelo')?.invalid
+                        " style="margin-top: 5px">
+                        <span 
+                            *ngIf="veiculoForm.get('anoModelo')?.errors?.['required']">
+                                O preenchimento da ano do Modelo é obrigatório
+                        </span>
+                    </div>
+                </div>
+                
+                <br />
+                <button type="submit" class="btn btn-success">Salvar</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div [hidden]="!updated">
+            <h5 class="text-success">Veículo alterado com sucesso</h5>
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
